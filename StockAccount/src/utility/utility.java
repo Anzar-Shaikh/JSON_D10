@@ -7,7 +7,6 @@ import org.json.simple.parser.ParseException;
 
 import java.io.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Scanner;
 
 public class utility {
@@ -16,23 +15,64 @@ public class utility {
     JSONArray accountArray = new JSONArray();
     JSONObject account = new JSONObject();
     LocalDateTime dateTime = LocalDateTime.now();
-    public void addAccountDetails() {
+//    public void addAccountDetails() {
+//        Scanner sc = new Scanner(System.in);
+//
+//        System.out.println("Enter your first name : ");
+//        String  name = sc.next();
+//        System.out.println("Enter your money do you want to use to buy : ");
+//        long moneyHave = sc.nextLong();
+//        System.out.println("Enter number if you already have shares ::");
+//        long sharesHave = sc.nextLong();;
+//
+//        account.put("name",name);
+//        account.put("haveMoney",moneyHave);
+//        account.put("sharesHave",sharesHave);
+//        accountArray.add(account);
+//
+//        fileWriter(accountArray);
+//        System.out.println("Account details added successfully :: ");
+//    }
+    public void addPerson() {
         Scanner sc = new Scanner(System.in);
+        JSONObject studentDetails = new JSONObject();
 
-        System.out.println("Enter your first name : ");
-        String  name = sc.next();
-        System.out.println("Enter your money do you want to use to buy : ");
-        long moneyHave = sc.nextLong();
-        System.out.println("Enter number if you already have shares ::");
-        long sharesHave = sc.nextLong();;
+        System.out.print("Enter firstName: ");
+        String firstName = sc.next();
+        System.out.print("Enter lastName: ");
+        String lastName = sc.next();
+        System.out.print("Enter address: ");
+        String address = sc.next();
+        System.out.print("Enter city: ");
+        String city = sc.next();
+        System.out.print("Enter state: ");
+        String state = sc.next();
+        System.out.print("Enter email: ");
+        String email = sc.next();
+        System.out.print("Enter zip: ");
+        String  zip = sc.next();
+        System.out.print("Enter phoneNumber: ");
+        String  phoneNumber = sc.next();
 
-        account.put("name",name);
-        account.put("haveMoney",moneyHave);
-        account.put("sharesHave",sharesHave);
-        accountArray.add(account);
+        studentDetails.put("firstName", firstName);
+        studentDetails.put("lastName", lastName);
+        studentDetails.put("address", address);
+        studentDetails.put("city", city);
+        studentDetails.put("state", state);
+        studentDetails.put("email", email);
+        studentDetails.put("zip", zip);
+        studentDetails.put("phoneNumber", phoneNumber);
+        accountArray.add(studentDetails);
 
-        fileWriter(accountArray);
-        System.out.println("Account details added successfully :: ");
+        try (FileWriter file = new FileWriter("E:\\jsonFiles\\StockAccount.json")) {
+            file.write(accountArray.toJSONString());
+            file.flush();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("----------------Data added to Json File SuccessFully --------------------------");
+        studentDetails = null;
     }
 
     private void fileWriter(JSONArray accountArray) {

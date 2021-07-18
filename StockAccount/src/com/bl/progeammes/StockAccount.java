@@ -18,7 +18,7 @@ public class StockAccount {
         int choice = sc.nextInt();
         switch (choice) {
             case 1 :
-                utility.addAccountDetails();
+                utility.addPerson();
                 break;
             case 4 :
                 utility.fileReader();

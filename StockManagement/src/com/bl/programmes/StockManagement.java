@@ -17,12 +17,12 @@ public class StockManagement {
         Scanner sc = new Scanner(System.in);
         JSONParser jasonParser = new JSONParser();
         System.out.println("**********Welcome to stock management system ********");
-        JSONObject reliance = new JSONObject();
-        JSONObject tata = new JSONObject();
+        JSONObject company1 = new JSONObject();
+        JSONObject company2 = new JSONObject();
         JSONArray stocks = new JSONArray();
 //
-        relianceStocks(sc, reliance, stocks);
-        tataStocks(sc, tata, stocks);
+        relianceStocks(sc, company1, stocks);
+        tataStocks(sc, company2, stocks);
 
         gerStockPrice(jasonParser, stocks);
 
